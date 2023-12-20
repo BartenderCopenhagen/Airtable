@@ -1,1 +1,19 @@
-"Week " & WEEKNUM({Start Date}) & {Sprint #} & IF(AND({Start Date},{End Date}),": " & DATETIME_FORMAT({Start Date},'D/M/YY') & " - " & DATETIME_FORMAT({End Date},'D/M/YY')) 
+"Week " & 
+  IF(
+    OR(
+      WEEKNUM({Start Date}) > 1,
+      WEEKDAY({Start Date}) < 4
+    ),
+    WEEKNUM({Start Date}),
+    1
+  ) & 
+  IF(
+    WEEKDAY({Start Date}) <= 3,
+    "/1",
+    "/2"
+  ) &
+  {Sprint #} & 
+  IF(
+    AND({Start Date},{End Date}),
+    ": " & DATETIME_FORMAT({Start Date},'D/M/YY') & " - " & DATETIME_FORMAT({End Date},'D/M/YY')
+  )
