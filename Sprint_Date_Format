@@ -1,0 +1,1 @@
+"Week " & WEEKNUM({Start Date}) & {Sprint #} & IF(AND({Start Date},{End Date}),": " & DATETIME_FORMAT({Start Date},'D/M/YY') & " - " & DATETIME_FORMAT({End Date},'D/M/YY')) 
